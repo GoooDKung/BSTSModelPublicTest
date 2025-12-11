@@ -46,7 +46,6 @@ Before running the program, make sure you have Python installed before running t
 3.  **Run the script:**
 
     ```bash
-    # Mac and Linux
     python src/Bayes_Inventory_Imp_v2.py
     ```
 
