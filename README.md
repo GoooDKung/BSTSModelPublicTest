@@ -21,20 +21,35 @@ The data in this repository is **synthetic**. I generated dummy sales logs (gene
 
 Before running the program, make sure you have Python installed before running this program.
 
-1.  **Install requirements:**
+1. **Initialize Virtual Environment:**
+    First, create virtual environment, this is to manage the dependencies of the libraries used for the model
+    
+    ```bash
+    # Create the environment
+    python -m venv venv
+    ```
+    ``` bash
+    # Activate the environment
+    # Windows:
+    venv\Scripts\activate
+    # Mac/Linux:
+    source venv/bin/activate
+    ```
+
+2.  **Install requirements:**
     (Python 3.11+ recommended, this is due to library)
 
     ```bash
     pip install -r requirements.txt
     ```
 
-2.  **Run the script:**
+3.  **Run the script:**
 
     ```bash
     python src/forecasting_model.py
     ```
 
-3.  **Enter Inputs:**
+4.  **Enter Inputs:**
     Since the system isn't directly connected to the restaurant's POS for margin data, you will need to type in the economic variables manually when prompted. The input is as follows:
 
     * **Ingredient:** Name of the item (e.g., `chicken` or `shrimp`), this ingredient must exist in bill of material and inventory.
@@ -44,7 +59,7 @@ Before running the program, make sure you have Python installed before running t
 
     *Note that all of the numeric values for Cost of Waste and Cost of Lost Sales are based on THB
 
-## How it Works
+## General idea of How it Works?
 
 * **Forecasting:** It uses `PyMC` to generate a probability distribution (fan chart) for future demand for specific forecasting period.
 * **Optimization:** It uses `NumPy` to run a Newsvendor simulation. If the "Cost of Lost Sales" is high, it recommends an aggressive strategy (stocking extra). If "Cost of Waste" is high, it recommends a conservative strategy.
